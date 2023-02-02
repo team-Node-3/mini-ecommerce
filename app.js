@@ -1,13 +1,17 @@
-const express = require('express')
-const dotenv = require('dotenv')
+const express = require('express');
+const dotenv = require('dotenv');
 
-dotenv.config()
+dotenv.config();
 
-const app = express()
-app.use(express.json())
-app.get('/', (req, res) => {
-  res.send('HiHi')
-})
+const mypageRouter = require('./routes/mypage');
+
+const app = express();
+app.use(express.json());
+
+app.use('/mypage', mypageRouter);
+
+
 app.listen(process.env.port, async () => {
   console.log('server started!')
 })
+
