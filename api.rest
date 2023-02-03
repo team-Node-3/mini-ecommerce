@@ -1,5 +1,21 @@
-GET http://localhost:3000/mypage
+POST http://localhost:3000/auth/signup
 Content-Type: application/json
+
 {
-  "userId": "1"
+  "email":"abc@naver.com",
+  "pw":"1234",
+  "nickName":"abc",
+  "PhoneNumber":"010-1234-1234",
+  "address":"서울시 서울구 서울동",
+  "admin":1
 }
+
+###
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "nickName":"abc",
+  "pw":"1234"
+}
+
