@@ -78,7 +78,8 @@ class AuthController {
     // 쿠키에 토큰담아서 response
 
       res.cookie("accessToken", accessToken);
-      return res.status(200).json({ msg: "로그인완료"})
+      // return res.status(200).json({ msg: "로그인완료"})
+      return res.status(200).json({ accessToken })
     }
     catch (error) {
       console.log(error);

@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const { User } = require('../models/index');
+const { User } = require('../models');
 // 모델 가져오기
 
 // 쿠키에 담아 보내줬던 토큰이 일치하는지 검증하고,
@@ -28,7 +28,6 @@ module.exports = async (req, res, next) => {
       authToken,
       "my-secret-key"
     );
-    
   // primary key를 이용한 검색
     User.findByPk(userId).then(
       (User) => {
