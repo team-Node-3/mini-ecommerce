@@ -1,24 +1,24 @@
-require('dotenv').config();
-const env = process.env;
-const development = {
+
+{
+  "development": {
     "username": "root",
-    "password": env.password,
-    "database": env.database,
-    "host": env.host,
+    "password": "xodus123",
+    "database": "mini-ecommerce",
+    "host": "mini-ecommerce.cloctlt8wxsu.ap-northeast-2.rds.amazonaws.com",
     "dialect": "mysql"
-  }
-  const test = {
+  },
+  "test": {
     "username": "root",
     "password": null,
     "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
-  }
-  const production = {
+  },
+  "production": {
     "username": "root",
     "password": null,
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }
-  module.exports = { development };
+}
