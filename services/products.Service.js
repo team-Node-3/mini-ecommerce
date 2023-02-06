@@ -5,6 +5,24 @@ const ProductRepository = require('../repositories/products.Repositories')
 class ProductService {
     productRepository = new ProductRepository();
 
+
+    listProduct = async () => {
+        const productList = await this.productRepository.listProducts()
+
+        return   productList.map(productList => {
+            return {
+              productId: productList.productId,
+              name: productList.name,
+              price: productList.price,
+              stock: productList.stock,
+              desc: productList.desc,
+              image: productList.image,
+              createdAt: productList.createdAt,
+		        updatedAt: productList.updatedAt,
+            }
+          });
+    }
+
     uploadProduct = async (name, price, stock, desc, image) =>{
 
         const productData = await this.productRepository.createProduct(name, price, stock, desc, image)

@@ -3,6 +3,15 @@ const db = require('../models')
 
 
 class ProductsRepository {
+
+    listProducts = async () => {
+
+        const productList = await db.Product.findAll();
+
+        console.log(productList)
+        return productList;
+    }
+
     createProduct = async (
         name, 
         price, 
