@@ -20,7 +20,7 @@ class ListController {
     }
   };
   createOrder = async (req, res, next) => {
-    const { userId } = res.locals.user.id;
+    const  userId  = res.locals.user.id;
     const { productId, amount } = req.body;
     
     const order = await this.listService.createOrder(productId, amount, userId);

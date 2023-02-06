@@ -110,14 +110,14 @@
     });
 }
 
-  function addorder(productId) {
+  function addorder(productId, userId) {
     const amount = 1;
     $.ajax({
       type: "POST",
       url: "/api/orders",
       data: {
         productId,
-        
+        userId,
         amount
       },
       error: function(xhr, status, error) {
