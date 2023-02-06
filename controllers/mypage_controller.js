@@ -27,7 +27,7 @@ class MypageController {
 
   // 마이페이지 수정
   updateMypage = async (req, res) => {
-    const nickname = res.locals.user.nickName;
+    const nickname = res.locals.user.nickname;
     const fieldsToBeUpdated = await userUpdateValidation.validateAsync(req.body);
     try {
       const modifyUser = await this.mypageService.updateMypage(
@@ -42,7 +42,7 @@ class MypageController {
 
   // 마이페이지 삭제
   deleteMypage = async (_, res) => {
-    const nickname = res.locals.user.nickName;
+    const nickname = res.locals.user.nickname;
     try {
       const deleteUser = await this.mypageService.deleteMypage(nickname);
       res.json(deleteUser);
