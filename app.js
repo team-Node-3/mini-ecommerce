@@ -16,6 +16,16 @@ app.use(express.static("static"));
 app.set('view engine', "ejs")
 app.set("views", "./static/views")
 
+// 로그인 페이지 ejs 연결
+app.get('/login', (req, res) => {
+  res.render('login.ejs');
+});
+
+// 회원가입 페이지 ejs 연결
+app.get('/signUp', (req, res) => {
+  res.render('signUp.ejs');
+});
+
 
 // const cookieParser = require('cookie-parser')
 app.use(express.json())
