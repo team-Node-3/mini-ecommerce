@@ -41,6 +41,14 @@
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+    <style>
+      .img {
+          width: 300px;
+          height: 150px;
+          object-fit: cover;
+      }
+    </style>
+
 <script>
   getProducts(1);
   // const queryString = window.location.search;
@@ -71,7 +79,9 @@
         const temp = document.createElement('div');
         temp.setAttribute('class', 'product-box');
         temp.innerHTML = `
-        <img class="product product-image" src="static/images/product.jpg" />
+        <img class="product product-image" src="${data[i].image}" style="width: 250px;
+          height: 250px;
+          object-fit: cover;">
         <div class="product product-name">
           <h4>
           <div>${data[i].name}</div></h4>
