@@ -50,6 +50,7 @@ class AuthController {
   login = async (req, res, next) => {
     try {
       const { nickname, password } = req.body;
+      console.log(nickname, password)
       // 닉네임으로 검색
       const user = await this.authRepository.findBynickName(nickname);
       // 입력 pw와 DB의 pw일치여부 판단

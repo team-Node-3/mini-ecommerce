@@ -67,9 +67,10 @@
             password: password,
           },
           success: function (response) {
-            customAlert("로그인 완료!");
+            location.href='/'
+            // customAlert("로그인 완료!");
             //로그인구현되면 변경해야함~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            window.location.replace("/user"); //사장인지 유저인지 구분해서
+            // window.location.replace("/user"); //사장인지 유저인지 구분해서
           },
           error: function (response) {
             customAlert("정확한 내용을 입력해 주세요");
