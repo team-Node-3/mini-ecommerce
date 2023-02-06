@@ -244,46 +244,46 @@
 		function listing(id) {
 			$.ajax({
 			  type: "GET",
-			  url: "/admin/product/list",
+			  url: "/admin/order/list",
 			  data: {},
 			  success: function (response) {
 				let rows = response.data;
 				console.log(rows)
 				for (let i = 0; i < rows.length; i++) {
-				  let productId = rows[i]["productId"];
-				  let name = rows[i]["name"];
-				  let price = rows[i]["price"];
-				  let image = rows[i]["image"];
-				  let stock = rows[i]["stock"];
-				  let desc = rows[i]["desc"];
+					let image = rows[i]["image"]
+					let name = rows[i]["name"]
+					let orderId = rows[i]["orderId"]
+					let amount = rows[i]["amount"]
+					let nickname = rows[i]["nickname"]
+					let address = rows[i]["address"]
 	
 				  let temp_html = `<tbody>
 					<tr>
 						<td>
 							<img src="${image}" alt="">
 							<a class="user-link">${name}</a>
-							<span class="user-subhead">상품번호 : ${productId}</span>
+							<span class="user-subhead">주문번호 : ${orderId}</span>
 						</td>
 						<td>
-							${stock}
+							${amount}
 						</td>
 						<td class="text-center">
-							<span class="label label-default">${price}</span>
+							<span class="label label-default">${nickname}</span>
 						</td>
 						<td>
-							<a>${desc}</a>
+							<a>${address}</a>
 						</td>
 						<td style="width: 20%;">
-							<a id="editButton" onclick="editModal()" class="table-link">
+							<!-- <a id="editButton" onclick="editModal()" class="table-link">
 								<span class="fa-stack">
 									<i class="fa fa-square fa-stack-2x"></i>
-									<i data-productId="${productId}" class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+									<i data-productId="${orderId}" class="fa fa-pencil fa-stack-1x fa-inverse"></i>
 								</span>
-							</a>
+							</a> -->
 							<a id="deleteButton" onclick="deleteModal()" class="table-link danger">
 								<span class="fa-stack">
 									<i class="fa fa-square fa-stack-2x"></i>
-									<i data-productId="${productId}" class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+									<i data-productId="${orderId}" class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
 								</span>
 							</a>
 						</td>
@@ -345,31 +345,10 @@
 <body>
 	<header>
 
-		<!-- Nav Bar 왼쪽 정렬 -->
-		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="#">운동화 쇼핑몰</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-					data-bs-target="#collapsibleNavbar">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="collapsibleNavbar">
-					<ul class="navbar-nav">
-						<li class="nav-item">
-							<a class="nav-link" href="/admin">상품관리</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="/admin/order">주문관리</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">홈</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-
+		<%- include('adminNavBar.ejs')%>
+		
 	</header>
+
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 	<div class="container" id="container">
 		<div class="row">
@@ -380,9 +359,9 @@
 							<thead>
 								<tr>
 									<th><span>상품이름</span></th>
-									<th class="text-center"><span>재고수량</span></th>
-									<th class="text-center"><span>가격</span></th>
-									<th><span>상품설명</span></th>
+									<th class="text-center"><span>주문수량</span></th>
+									<th class="text-center"><span>주문자명</span></th>
+									<th><span>주소</span></th>
 									<th>&nbsp;</th>
 								</tr>
 							</thead>
@@ -391,8 +370,6 @@
 				</div>
 			</div>
 		</div>
-
-		<button type="button" onclick="uploadModal()" id="addProduct" class="btn btn-primary btn-lg">상품 추가</button>
 
 	</div>
 	</div>
