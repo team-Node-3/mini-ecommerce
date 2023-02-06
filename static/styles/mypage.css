@@ -1,0 +1,119 @@
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  background-color: #ffffff;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(69, 69, 70)
+}
+
+.navbar {
+  font-family: GmarketSansMedium;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1px 220px;
+}
+
+.navbar_logo {
+  font-size: 30px;
+  font-weight: bold;
+  display: flex;
+}
+
+.navbar_menu {
+  display: flex;
+  list-style: none;
+  font-size: 1.2rem;
+}
+
+.navbar_menu li {
+  padding: 8px 20px;
+}
+
+
+.body_wrap {
+  width: 100%;
+  height: 500px;
+}
+
+.info_title {
+  font-family: GmarketSansMedium;
+  font-weight: bold;
+  margin-top: 3%;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.body_content {
+  margin-top: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+.content_wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label_wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+label {
+  font-family: GmarketSansMedium;
+  margin-top: 36px;
+  margin-bottom: 3px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.input_wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.user_info {
+  font-family: GmarketSansMedium;
+  font-weight: 100;
+  width: 360px;
+  height: 30px;
+  margin-top: 30px;
+  margin-left: 30px;
+  border: none;
+  border-bottom: 1.5px rgb(210, 206, 206) solid;
+}
+
+.user_info:focus {
+  outline: none;
+}
+
+
+.button_wrap {
+  display: flex;
+  justify-content: center;
+  
+}
+
+.wrapbtn {
+  margin-top: -50px;
+  font-family: GmarketSansMedium;
+  margin-right: 10px;
+  border: none;
+  background-color: #e1e1e1;
+  height: 30px;
+  font-size: 1rem;
+  border-radius: 5px;
+}
