@@ -49,8 +49,8 @@ class OrderController {
 
     deleteOrder = async (req,res) => {
         try {
-            const {OrderId} =req.body
-            const deleteOrder = await this.OrderService.deleteOrder(OrderId)
+            const {orderId} =req.body
+            const deleteOrder = await this.OrderService.deleteOrder(orderId)
             return res.status(200).send({ message : '상품 삭제 성공!'})
         }
         catch (err){
