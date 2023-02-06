@@ -50,14 +50,14 @@ class AuthController {
   login = async (req, res, next) => {
     try {
       const { nickname, password } = req.body;
-
       // 닉네임으로 검색
       const user = await this.authRepository.findBynickName(nickname);
-      console.log(user)
       // 입력 pw와 DB의 pw일치여부 판단
+  
       const pwTest = await bcrypt.compare(password, user[0].password)
-      console.log(pwTest)
    // pw 불일치 혹은 user검색결과가 없을때
+
+      console.log(pwTest)
 
       if(user.length === 0 || !pwTest ){
         return res
