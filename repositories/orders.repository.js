@@ -42,7 +42,7 @@ class OrdersRepository {
         return editedOrder
     }
     deleteOrder = async (OrderId) => {
-        const deleteOrder = await db.Orders.destroy({ where :{OrderId:OrderId}})
+        const deleteOrder = await db.Orders.destroy({ where :{orderId:OrderId}})
         
         return;
     }
@@ -57,11 +57,6 @@ class OrdersRepository {
         return user;
       }
 
-      listUsers = async () => {
-        const user = await db.User.findAll();
-        console.log(user)
-        return user;
-      }
 
 }
 

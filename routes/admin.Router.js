@@ -39,10 +39,6 @@ router.get("/order", (req,res) => {
 
 router.get("/order/list", ordersController.listOrder)
 
-router.post("/order/add", upload.single("image"), productsController.uploadProduct)
-
-router.patch("/order/edit", productsController.editProduct)
-
-router.delete("/order/delete", productsController.deleteProduct)
+router.delete("/order/delete", ordersController.deleteOrder)
 
 module.exports = router;
