@@ -1,16 +1,46 @@
 const { Products } = require('../models');
+const { Orders } = require('../models');
 const { sequelize } = require("../models");
 
 class ListRepository {
-  constructor(ProductsList) {
-    this.ProductsList = ProductsList;
+  constructor(ListModel) {
+    this.listModel = ListModel;
   }
-  findList = async () => {
-    const List = await Products.findAll();
+  getProductDataById = async (productId) => {
+    try {
+      const productData = await this.Products.findAll({
+        where: { productId },
+      });
+      return productData;
+    } catch (error) {
+      error.status = 500;
+      throw error;
+    }
+  };
+  findList = async (limit, offset) => {
+    const List = await Products.findAndCountAll({
+      raw: true,
+      offset: offset,
+      limit: limit,
+      order: [['updatedAt', 'ASC']],
+  });
 
     return List;
   };
+  createOrder = async (productId, userId, amount) => {
+    const order = await Orders.create({
+      productId, amount, userId,
+      attributes: [
+        'orderId',
+        'productId',
+        'userId',
+        'amount',
+      ],
+    });
+    // const work = await this.Products.findByPk(productId);
 
+    return order;
+  };
   
 }
 
