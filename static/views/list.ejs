@@ -165,6 +165,50 @@
           <nav aria-label="Page navigation example">
             <ul id="page-num" class="pagination justify-content-center"></ul>
           </nav>
+
+          <div
+            class="modal text-left"
+            id="cartModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="cartModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="cartModalLabel">알림</h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  장바구니에 담았습니다! 장바구니로 갈까요?
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-outline-sparta"
+                    data-dismiss="modal"
+                  >
+                    취소
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-sparta"
+                    onclick='window.location.href="/basket"'
+                  >
+                    장바구니
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
   </body>
   
 </html>
