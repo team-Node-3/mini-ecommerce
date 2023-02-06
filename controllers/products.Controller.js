@@ -4,9 +4,16 @@ const productsService = require('../services/products.Service');
 class ProductsController {
     productsService = new productsService();
 
+    listProduct = async (req,res) =>
+    {
+        const productList = await this.productsService.listProduct()
+        return res.status(200).json({ data: productList });
+    }
+
     uploadProduct = async (req, res) => {
         try {
-            const { name, price, stock, desc, image } = req.body;
+            const { name, price, stock, desc} = req.body;
+            const image = req.file.path
             const uploadProduct = await this.productsService.uploadProduct(
                 name,
                 price,
