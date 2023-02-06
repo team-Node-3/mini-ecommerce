@@ -15,7 +15,7 @@ const authMiddleware = require('./middleware/auth');
 
 const cookies = require("cookie-parser");
 app.use(cookies());
-
+app.use(express.static("assets"));
 app.use(express.static("static"));
 app.set('view engine', "ejs")
 app.set("views", "./static/views")
