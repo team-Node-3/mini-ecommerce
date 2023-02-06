@@ -6,7 +6,10 @@ const { User } = require('../models');
 // 있다면(로그인 성공이 된 상태) 미들웨어 next() 로 넘김
 
 module.exports = async (req, res, next) => {
-  const { cookie } = req.headers;
+  // const { cookie } = req.headers;
+  const cookie = req.cookies;
+  const accessToken = req.cookies.accessToken
+
 
   // 쿠키 없을때 예외
   if(!cookie) {
@@ -15,17 +18,17 @@ module.exports = async (req, res, next) => {
 
   // authToken이 없거나, authType이 accessToken이 아닐때 예외
 
-  const [authType, authToken] = cookie.split("=");
-  if (!authToken || authType !== "accessToken") {
-    res.status(401).send({
-      msg: "로그인 후 이용하세요"
-    })
-    return;
-  }
+  // const [authType, authToken] = cookie.split("=");
+  // if (!authToken || authType !== "accessToken") {
+  //   res.status(401).send({
+  //     msg: "로그인 후 이용하세요"
+  //   })
+  //   return;
+  // }
   // 토큰 검증
   try {
     const { userId } = jwt.verify(
-      authToken,
+      accessToken,
       "my-secret-key"
     );
   // primary key를 이용한 검색

@@ -11,6 +11,10 @@ const authRouter = require('./routes/auth.routes')
 const mypageRouter = require('./routes/mypage.routes');
 const adminRouter = require("./routes/admin.Router.js")
 const listRouter = require("./routes/list.routes.js")
+const authMiddleware = require('./middleware/auth');
+
+const cookies = require("cookie-parser");
+app.use(cookies());
 
 app.use(express.static("static"));
 app.set('view engine', "ejs")
@@ -26,6 +30,13 @@ app.get('/signUp', (req, res) => {
   res.render('signUp.ejs');
 });
 
+// 마이 페이지
+app.get('/mypage', authMiddleware, (req, res) => {
+  const user = res.locals.user;
+  console.log(user)
+  res.render('mypage.ejs', {user:user});
+});
+
 
 // const cookieParser = require('cookie-parser')
 app.use(express.json())
@@ -38,9 +49,6 @@ app.use('/admin', adminRouter);
 app.use('/api', router);
 app.use('/', express_render, listRouter);
 
-app.get('/Mypagee', (req, res) => {
-  res.render('mypage')
-})
 
 app.listen(process.env.port, async () => {
   console.log('server started!')
