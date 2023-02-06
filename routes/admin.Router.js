@@ -1,5 +1,6 @@
 const express = require("express");
 const ProductsController = require("../controllers/products.Controller");
+const ListController = require("../controllers/list.controller")
 const router = express.Router();
 const multer = require("multer");
 
@@ -19,18 +20,20 @@ const upload = multer({ storage:storage });
 
 
 router.get("/", (req,res) => {
-    return res.render('admin')
+    return res.render('admin-product-manage')
 })
 
-router.get("/upload",  (req,res) => {
-    return res.render('product-upload')
-})
 
-// router.get("/list", )
+router.get("/product/list", productsController.listProduct)
 
-router.post("/product", upload.single("image"), productsController.uploadProduct)
+router.post("/product/add", upload.single("image"), productsController.uploadProduct)
 
 router.patch("/product/edit", productsController.editProduct)
 
 router.delete("/product/delete", productsController.deleteProduct)
+
+router.get("/order", (req,res) => {
+  return res.render('admin-order-manage')
+})
+
 module.exports = router;
