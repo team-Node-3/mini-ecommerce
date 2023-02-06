@@ -6,27 +6,21 @@ class AuthRepository {
     this.Model = Model;
   }
 
-  findById = async ( id) => {
-    const user = await this.Model.findAll({ 
-      where: { id },
-    });
-    return user;
-  }
-
-  findBynickName = async ( nickName ) => {
+  findBynickName = async ( nickname ) => {
     // findAll이 undefined
     const user = await this.Model.findAll({ 
-      where: { nickName },
+      where: { nickname },
     });
     return user;
   }
 
-  createUser = async ( email, hashed, nickName, PhoneNumber, address, admin) => {
+  createUser = async ( email, hashed, name, nickname, phone, address, admin) => {
     const userData = await this.Model.create({
       email,
-      pw: hashed,
-      nickName,
-      PhoneNumber,
+      password: hashed,
+      name,
+      nickname,
+      phone,
       address,
       admin
     })
