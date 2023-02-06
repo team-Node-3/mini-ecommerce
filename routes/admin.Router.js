@@ -19,7 +19,12 @@ const upload = multer({ storage:storage });
 
 
 router.get("/", (req,res) => {
-    return res.render('admin')
+    return res.render('admin-product-manage')
+})
+
+
+router.get("/order", (req,res) => {
+  return res.render('admin-order-manage')
 })
 
 router.get("/upload",  (req,res) => {
