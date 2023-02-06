@@ -1,11 +1,12 @@
 const express = require("express");
 const ProductsController = require("../controllers/products.Controller");
+const OrdersController = require("../controllers/orders.controller")
 const ListController = require("../controllers/list.controller")
 const router = express.Router();
 const multer = require("multer");
 
 const productsController = new ProductsController();
-
+const ordersController = new OrdersController();
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -35,5 +36,13 @@ router.delete("/product/delete", productsController.deleteProduct)
 router.get("/order", (req,res) => {
   return res.render('admin-order-manage')
 })
+
+router.get("/order/list", ordersController.listOrder)
+
+router.post("/order/add", upload.single("image"), productsController.uploadProduct)
+
+router.patch("/order/edit", productsController.editProduct)
+
+router.delete("/order/delete", productsController.deleteProduct)
 
 module.exports = router;

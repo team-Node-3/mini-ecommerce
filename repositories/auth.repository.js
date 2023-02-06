@@ -6,6 +6,13 @@ class AuthRepository {
     this.Model = Model;
   }
 
+  findById = async ( id) => {
+    const user = await this.Model.findAll({ 
+      where: { id },
+    });
+    return user;
+  }
+
   findBynickName = async ( nickName ) => {
     // findAll이 undefined
     const user = await this.Model.findAll({ 
