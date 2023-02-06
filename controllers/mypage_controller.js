@@ -8,18 +8,10 @@ class MypageController {
 
   // 마이페이지 조회
   showMypage = async (_, res) => {
-    // const  currentUser = res.locals.user.id;
+    const currentUser = res.locals.user;
     try {
-      // const user = await this.mypageService.showMypage(currentUser);
-      const user = {
-        email: 'abc@naver.com',
-        pw: '1234',
-        nickName: 'abc',
-        PhoneNumber: '010-1111-1111',
-        address: '서울시 서울구 서울동'
-      }
-      console.log(user)
-      res.json({user});
+      const user = await this.mypageService.showMypage(currentUser);
+      res.json(user);
     } catch (err) {
       res.status(500).json({ message: err.message });
     }

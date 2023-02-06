@@ -1,9 +1,9 @@
 const { User } = require('../models');
 
 class MypageRepository {
-  showMypage = async(userId) => {
+  showMypage = async(currentUser) => {
     const user = await User.findOne({
-      where: { id:userId }
+      where: { nickname:nickname }
     })
     return user;
   };
