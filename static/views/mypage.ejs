@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../styles/mypage.css">
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script defer src="../js/mypage.js"></script>
+  
+  <title>마이 페이지</title>
+</head>
+<body>
+
+  <nav class="navbar">
+
+    <div class="navbar_logo">
+
+      <a href="/">슈즈 싹스리</a>
+
+
+    </div>
+
+    <ul class="navbar_menu">
+      <li><a href="/">Home</a></li>
+      <li><a href=""></a>장바구니</li>
+      <li><a href=""></a>마이페이지</li>
+    </ul>
+
+    
+
+  </nav>
+  <div class="body_wrap">
+    <div class="info_title">내 정보</div>
+    <div class="body_content">
+      <div class="content_wrap">
+          <div class="label_wrap">
+            <label>닉네임</label>
+            <label>비밀번호</label>
+            <label>이름</label>
+            <label>이메일</label>
+            <label>전화번호</label>
+            <label>주소</label>
+          </div>
+          <div class="input_wrap">
+            <input class="user_info" id="nickName" type="text" readonly>
+            <input class="user_info" id="password" type="text">
+            <input class="user_info" id="name" type="text" readonly>
+            <input class="user_info" id="email" type="text">
+            <input class="user_info" id="phone" type="text">
+            <input class="user_info" id="address" type="text">
+          </div>    
+      </div>
+    </div>
+    <div class="button_wrap">
+      <button class="wrapbtn" onclick="modifyMypage()">정보 수정</button>
+      <button class="wrapbtn">계정 삭제</button>
+    </div>
+    
+
+  </div>
+  
+</body>
+</html>
