@@ -4,19 +4,19 @@ const { Products } = require('../models');
 class ListService {
   listRepository = new ListRepository(Products);
 
-  findList = async () => {
-    const List = await this.listRepository.findList();
+  findList = async (limit, offset) => {
+    const List = await this.listRepository.findList(limit, offset);
 
-    return List.map(list => {
-      return {
-        productId: list.productId,
-        name: list.name,
-        price: list.price,
-        stock: list.stock,
-        desc: list.desc,
-        image: list.image,
-      }
-    });
+    return List
+  }
+  createOrder = async (productId,  amount) => {
+    const order = await this.listRepository.createOrder(productId,  amount);
+
+    return {
+      productId: order.productId,
+      // userId: order.userId,
+      amount: order.amount,
+    };
   }
 }
 module.exports = ListService;
