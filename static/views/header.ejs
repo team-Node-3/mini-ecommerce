@@ -1,0 +1,48 @@
+<nav class="navbar">
+
+  <div class="navbar_logo">
+
+    <a href="/">슈즈 싹스리</a>
+
+
+  </div>
+
+  <%if (user) { %>
+    <% if(user.admin == 0) { %>
+      <ul class="navbar_menu">
+        <li><a href="/">Home</a></li>
+        <li><a href="">장바구니</a></li>
+        <li><a href="/mypage">마이페이지</a></li>
+      </ul>
+
+      <div class="navbar_button">
+        <button id="logout-btn" onclick="location.href='/auth/logout'">로그아웃</button>
+      </div>
+  <% } else { %>
+      <ul class="navbar_menu">
+        <li><a href="/">Home</a></li>
+        <li><a href="">상품등록</a></li>
+        <li><a href="">고객관리</a></li>
+      </ul>
+  
+      <div class="navbar_button">
+        <button id="logupt-btn" onclick="location.href='/auth/logout'">로그아웃</button>
+      </div>
+      <%}%>
+      <% } else { %>
+        <ul class="navbar_menu">
+          <li><a href="/">Home</a></li>
+          <li><a href="">장바구니</a></li>
+          <li><a href="/mypage">마이페이지</a></li>
+        </ul>
+
+        <div class="navbar_button">
+          <button id="login-btn" onclick="location.href='./login'">로그인</button>
+          <button id="signup-btn">회원가입</button>
+        </div> 
+      <%}%>
+    
+
+
+</nav>
+

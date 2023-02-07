@@ -21,6 +21,7 @@ a {
   justify-content: space-between;
   align-items: center;
   padding: 1px 220px;
+  margin-top: 20px;
 }
 
 .navbar_logo {
@@ -39,6 +40,18 @@ a {
   padding: 8px 20px;
 }
 
+.navbar_button {
+  margin-top: 2.5%;
+}
+
+.navbar_button button {
+  font-family: GmarketSansMedium;
+  font-size: 1rem;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(35, 53, 41);
+  border: none;
+}
+
 
 .body_wrap {
   width: 100%;
@@ -48,13 +61,13 @@ a {
 .info_title {
   font-family: GmarketSansMedium;
   font-weight: bold;
-  margin-top: 3%;
+  margin-top: 5%;
   font-size: 2.5rem;
   text-align: center;
 }
 
 .body_content {
-  margin-top: 20px;
+  margin-top: 30px;
   width: 100%;
   height: 100%;
 }

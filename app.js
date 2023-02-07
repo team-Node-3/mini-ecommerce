@@ -33,7 +33,6 @@ app.get('/signUp', (req, res) => {
 // 마이 페이지
 app.get('/mypage', authMiddleware, (req, res) => {
   const user = res.locals.user;
-  console.log(user)
   res.render('mypage.ejs', {user:user});
 });
 

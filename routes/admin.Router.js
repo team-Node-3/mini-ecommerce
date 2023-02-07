@@ -23,6 +23,8 @@ router.get("/", (req,res) => {
     return res.render('admin-product-manage')
 })
 
+// 전체 고객 정보 불러오기
+// router.get('user/list')
 
 router.get("/product/list", productsController.listProduct)
 

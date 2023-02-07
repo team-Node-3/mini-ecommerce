@@ -22,6 +22,7 @@ class MypageController {
   updateMypage = async (req, res) => {
     const nickname = res.locals.user.nickname;
     const fieldsToBeUpdated = await userUpdateValidation.validateAsync(req.body);
+    console.log(fieldsToBeUpdated)
     try {
       const modifyUser = await this.mypageService.updateMypage(
         nickname,
