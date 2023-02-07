@@ -6,6 +6,10 @@ const router = express.Router();
 const multer = require("multer");
 const authMiddleware = require('../middleware/auth');
 
+// admin user
+const UserlistController = require("../controllers/admin-user.controller");
+const userlistController = new UserlistController();
+
 const productsController = new ProductsController();
 const ordersController = new OrdersController();
 
@@ -21,8 +25,19 @@ const storage = multer.diskStorage({
 const upload = multer({ storage:storage });
 
 
+router.get("/product", (req,res) => {
+    return res.render('admin-product-manage')
+})
+
+// 회원 목록 전체 조회
+router.get('/user', authMiddleware, (req, res) => {
+  const user = res.locals.user;
+  res.render('admin-user', {user:user});
+})
+
 
 router.get("/", authMiddleware, productsController.showAdminpage)
+
 
 router.get("/product/list", productsController.listProduct)
 
@@ -31,6 +46,10 @@ router.post("/product/add", upload.single("image"), productsController.uploadPro
 router.post("/product/edit", upload.single("image"), productsController.editProduct)
 
 router.delete("/product/delete", productsController.deleteProduct)
+
+// 회원 목록 조회 삭제 router
+router.get('/users', authMiddleware, userlistController.showUser);
+router.delete('/user/userId', authMiddleware, userlistController.deleteUser);
 
 router.get("/order", (req,res) => {
   return res.render('admin-order-manage')
