@@ -15,7 +15,7 @@ class UserlistController {
 
   // 유저 삭제
   deleteUser = async (req, res) => {
-    const userId = req.params;
+    const { userId } = req.params;
     const currentUser = res.locals.user.admin;
     try{
       if (currentUser === 1) {

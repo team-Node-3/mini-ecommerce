@@ -11,6 +11,7 @@ function showUser() {
     success: function (response) {
       let rows = response['user']
       for (let i = 0; i < rows.length; i++) {
+        let id = rows[i]['id'];
         let nickname = rows[i]['nickname'];
         let name = rows[i]['name'];
         let email = rows[i]['email'];
@@ -33,7 +34,7 @@ function showUser() {
             </div>
     
             <div class="user_button">
-              <button class="userbtn">삭제</button>
+              <button class="userbtn" onclick="deleteUser(${id})">삭제</button>
             </div>
     
   
@@ -47,4 +48,18 @@ function showUser() {
     }
   })
 
-}
+};
+
+function deleteUser(id){
+  $.ajax({
+    type: 'DELETE',
+    url: `/admin/users/${id}`,
+    data:{},
+    success: function (response) {
+      alert('삭제가 완료되었습니다.');
+      window.location.reload();
+    }
+  })
+
+};
+

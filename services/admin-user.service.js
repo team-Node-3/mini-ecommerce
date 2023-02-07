@@ -9,7 +9,7 @@ class UserlistService {
   };
 
   deleteUser = async ( userId ) => {
-    const deleteUsers = await this.userlistRepository.deleteUser( userId, currentUser );
+    const deleteUsers = await this.userlistRepository.deleteUser( userId );
     return deleteUsers;
   }
 
