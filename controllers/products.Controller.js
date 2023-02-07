@@ -21,7 +21,7 @@ class ProductsController {
                 desc,
                 image
             );
-            return res.status(200).send({ message: '상품 등록 성공!' });
+            return res.redirect('/admin');
         } catch (err) {
             console.log(err);
             res.status(400).json({ errorMessage: '상품 등록 실패' });
@@ -40,13 +40,8 @@ class ProductsController {
                 desc,
                 image
             );
-            console.log(productId,
-                name,
-                price,
-                stock,
-                desc,
-                image)
-            return res.status(200).send({ message: '상품 수정 성공!' });
+
+            return res.redirect('/admin');
         } catch (err) {
             console.log(err);
             res.status(400).json({ errorMessage: '상품 수정 실패' });

@@ -59,8 +59,5 @@ router.get("/order/list", ordersController.listOrder)
 
 router.delete("/order/delete", ordersController.deleteOrder)
 
-router.patch("/test", (req,res) => {
-  console.log(req.data)
-})
 
 module.exports = router;
