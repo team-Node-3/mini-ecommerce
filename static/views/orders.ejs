@@ -45,10 +45,10 @@
                         </div>
                     </div>
                     <div class="subdiv">
-                        <div class="basketprice"><input type="hidden" name="p_price" id="p_price1" class="p_price" value="20000">${price}원</div>
+                        <div class="basketprice"><input type="hidden" name="p_price" id="p_price1" class="p_price" value="${price}">${price}원</div>
                         <div class="num">
                             <div class="updown">
-                                <input type="text" name="p_num1" id="p_num1" size="2" maxlength="4" class="p_num" value="1" onkeyup="javascript:basket.changePNum(1);">
+                                <input type="text" name="p_num1" id="p_num1" size="2" maxlength="4" class="p_num" value="1" onkeyup="javascript:basket.changePNum(i);">
                                 <span onclick="javascript:basket.changePNum(1);"><i class="fas fa-arrow-alt-circle-up up"></i></span>
                                 <span onclick="javascript:basket.changePNum(1);"><i class="fas fa-arrow-alt-circle-down down"></i></span>
                             </div>
@@ -66,6 +66,7 @@
           },
         });
       }
+
 
 </script>
 </head>
@@ -162,10 +163,27 @@
             <div id="goorder" class="">
                 <div class="clear"></div>
                 <div class="buttongroup center-align cmd">
-                    <a href="javascript:void(0);">선택한 상품 주문</a>
+					<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="{ $('#exampleModal').modal('show'); }">
+						선택한 상품 주문
+					</button>
+                    
                 </div>
             </div>
         </form>
-
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <h5 class="modal-title" id="exampleModalLabel">알림</h5>
+				</div>
+				<div class="modal-body">
+				  주문이 완료되었습니다!
+				</div>
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-primary" onclick='window.location.href="/"'>확인</button>
+				</div>
+			  </div>
+			</div>
+		  </div>
 </body>
 </html>
