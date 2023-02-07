@@ -4,6 +4,7 @@ const OrdersController = require("../controllers/orders.controller")
 const ListController = require("../controllers/list.controller")
 const router = express.Router();
 const multer = require("multer");
+const authMiddleware = require('../middleware/auth');
 
 const productsController = new ProductsController();
 const ordersController = new OrdersController();
@@ -20,16 +21,13 @@ const storage = multer.diskStorage({
 const upload = multer({ storage:storage });
 
 
-router.get("/", (req,res) => {
-    return res.render('admin-product-manage')
-})
-
+router.get("/", authMiddleware, productsController.showAdminpage)
 
 router.get("/product/list", productsController.listProduct)
 
 router.post("/product/add", upload.single("image"), productsController.uploadProduct)
 
-router.patch("/product/edit", productsController.editProduct)
+router.post("/product/edit", upload.single("image"), productsController.editProduct)
 
 router.delete("/product/delete", productsController.deleteProduct)
 
@@ -40,5 +38,9 @@ router.get("/order", (req,res) => {
 router.get("/order/list", ordersController.listOrder)
 
 router.delete("/order/delete", ordersController.deleteOrder)
+
+router.patch("/test", (req,res) => {
+  console.log(req.data)
+})
 
 module.exports = router;
