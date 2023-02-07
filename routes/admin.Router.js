@@ -21,9 +21,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage:storage });
 
 
-router.get("/", (req,res) => {
-    return res.render('admin-product-manage')
-})
 
 router.get("/", authMiddleware, productsController.showAdminpage)
 
@@ -43,8 +40,5 @@ router.get("/order/list", ordersController.listOrder)
 
 router.delete("/order/delete", ordersController.deleteOrder)
 
-router.patch("/test", (req,res) => {
-  console.log(req.data)
-})
 
 module.exports = router;

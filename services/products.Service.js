@@ -38,11 +38,11 @@ class ProductService {
         return;
     }
 
-deleteProduct = async (productId) =>{
-    const deleteProduct = await this.productRepository.deleteProduct(productId)
+    deleteProduct = async (productId) =>{
+        const deleteProduct = await this.productRepository.deleteProduct(productId)
 
-    return;
-}
+        return;
+    }
 
     }
 
