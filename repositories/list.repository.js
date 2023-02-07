@@ -34,10 +34,10 @@ class ListRepository {
         'orderId',
         'productId',
         'userId',
-        'amount',
+        'amount'
       ],
     });
-    // const work = await this.Products.findByPk(productId);
+    //  const price = await this.Products.price;
 
     return order;
   };
