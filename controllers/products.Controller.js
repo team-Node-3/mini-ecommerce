@@ -40,12 +40,7 @@ class ProductsController {
                 desc,
                 image
             );
-            console.log(productId,
-                name,
-                price,
-                stock,
-                desc,
-                image)
+
             return res.status(200).send({ message: '상품 수정 성공!' });
         } catch (err) {
             console.log(err);

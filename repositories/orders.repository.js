@@ -12,35 +12,7 @@ class OrdersRepository {
         return OrderList;
     }
 
-    createOrder = async (
-        name, 
-        price, 
-        stock, 
-        desc, 
-        image
-    ) => {
-        const newOrder = await db.Orders.create({
-            name,
-            price,
-            stock,
-            desc,
-            image
-        })
-        return newOrder
-    }
-    editOrder = async (OrderId, name, price, stock, desc, image) => {
-        const editedOrder = await db.Orders.update({
-            name:name,
-            price:price,
-            stock:stock,
-            desc:desc,
-            image:image
-        },
-        {
-        where : {OrderId:OrderId}
-        })
-        return editedOrder
-    }
+
     deleteOrder = async (OrderId) => {
         const deleteOrder = await db.Orders.destroy({ where :{orderId:OrderId}})
         
