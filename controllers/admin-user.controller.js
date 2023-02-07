@@ -7,7 +7,7 @@ class UserlistController {
   showUser = async (_, res) => {
     try{
       const user = await this.userlistService.showUser();
-      res.json(user);
+      res.json({user});
     } catch (err) {
       res.status(500).json({ message: err.message });
     }

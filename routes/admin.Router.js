@@ -25,10 +25,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage:storage });
 
 
-router.get("/product", (req,res) => {
-    return res.render('admin-product-manage')
-})
-
 // 회원 목록 전체 조회
 router.get('/user', authMiddleware, (req, res) => {
   const user = res.locals.user;
