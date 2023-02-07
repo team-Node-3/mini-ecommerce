@@ -163,10 +163,27 @@
             <div id="goorder" class="">
                 <div class="clear"></div>
                 <div class="buttongroup center-align cmd">
-                    <a href="/">선택한 상품 주문</a>
+					<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="{ $('#exampleModal').modal('show'); }">
+						선택한 상품 주문
+					</button>
+                    
                 </div>
             </div>
         </form>
-
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <h5 class="modal-title" id="exampleModalLabel">알림</h5>
+				</div>
+				<div class="modal-body">
+				  주문이 완료되었습니다!
+				</div>
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-primary" onclick='window.location.href="/"'>확인</button>
+				</div>
+			  </div>
+			</div>
+		  </div>
 </body>
 </html>
