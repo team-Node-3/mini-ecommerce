@@ -35,27 +35,33 @@
 					let image = rows[i]["image"]
 					let name = rows[i]["name"]
 					let orderId = rows[i]["orderId"]
+					let price = rows[i]["price"]
 					let amount = rows[i]["amount"]
 					let nickname = rows[i]["nickname"]
 					let address = rows[i]["address"]
+
+					let totalPrice = price * amount
 	
 				  let temp_html = `<tbody>
 					<tr>
-						<td>
+						<td style="width:  20%;">
 							<img src="${image}" alt="">
 							<a class="user-link">${name}</a>
 							<span class="user-subhead">주문번호 : ${orderId}</span>
 						</td>
-						<td>
+						<td style="width:  9%; text-align:center">
 							${amount}
 						</td>
-						<td class="text-center">
-							<span class="label label-default">${nickname}</span>
+						<td class="text-center" style="width:  9%; text-align:center">
+							<span class="label label-default">${totalPrice}</span>
 						</td>
-						<td>
+						<td style="width:  18%; text-align:center">
+							<a>${nickname}</a>
+						</td>
+						<td style="text-align:center">
 							<a>${address}</a>
 						</td>
-						<td style="width: 20%;">
+						<td class="text-center"style="width: 20%;">
 							<!-- <a id="editButton" onclick="editModal()" class="table-link">
 								<span class="fa-stack">
 									<i class="fa fa-square fa-stack-2x"></i>
@@ -146,8 +152,9 @@
 								<tr>
 									<th><span>상품이름</span></th>
 									<th class="text-center"><span>주문수량</span></th>
+									<th class="text-center"><span>주문금액</span></th>
 									<th class="text-center"><span>주문자명</span></th>
-									<th><span>주소</span></th>
+									<th class="text-center"><span>주소</span></th>
 									<th>&nbsp;</th>
 								</tr>
 							</thead>

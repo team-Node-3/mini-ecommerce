@@ -8,6 +8,7 @@ class OrderService {
     OrderRepository = new OrderRepository();
     ProductRepository = new ProductRepository();
     AuthRepository = new AuthRepository();
+
     listOrder = async () => {
         const orderList = await this.OrderRepository.listOrders()
 
@@ -36,6 +37,7 @@ class OrderService {
                 image:orderedProduct.image,
                 name: orderedProduct.name,
                 orderId:orderList[i].orderId,
+                price:orderedProduct.price,
                 amount:orderList[i].amount,
                 nickname:orderedUser.nickname,
                 address:orderedUser.address
