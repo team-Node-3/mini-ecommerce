@@ -68,7 +68,7 @@
 									<i data-orderId="${orderId}" class="fa fa-pencil fa-stack-1x fa-inverse"></i>
 								</span>
 							</a> -->
-							<a id="deleteButton" onclick="deleteOrder()" class="table-link danger">
+							<a id="deleteButton" onclick="alertModal()" class="table-link danger">
 								<span class="fa-stack">
 									<i class="fa fa-square fa-stack-2x"></i>
 									<i data-orderId="${orderId}" class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
@@ -87,9 +87,6 @@
 			});
 		  }
 
-		function uploadModal() {
-			$('#uploadModal').modal('show');
-		}
 
 		/*
 		function deleteModal() {
@@ -102,16 +99,20 @@
 		*/
 
 
-		function editModal() {
-			$('#editModal').modal('show');
+		function alertModal() {
+			let orderId = event.target.dataset.orderid
+			document.getElementById('modal-orderId').value = orderId;
+
+			$('#alertModal').modal('show');
+
 			
 		}
 
 		function deleteOrder() {
 
-			let orderId = event.target.dataset.orderid
-			console.log(orderId)
+			let orderId = $('#modal-orderId').val()
 
+			console.log(orderId)
 			$.ajax({
 				method: 'DELETE',
 				url: '/admin/order/delete',
@@ -168,7 +169,7 @@
 	</div>
 
 
-	<!-- <div class="modal text-left" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel"
+	<div class="modal text-left" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel"
 		aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -179,15 +180,17 @@
 					</button>
 				</div>
 				<div class="modal-body" id="alertText">
+					정말로 삭제하시겠습니까?
+					<input type="hidden" id="modal-orderId" value="">
 				</div>
 				<div class="modal-footer">
-					<button onclick="deleteProduct()"id="deleteConfirm" type="button" class="btn btn-outline-sparta btn-confirm" data-dismiss="modal">
+					<button onclick="deleteOrder()"id="deleteConfirm" type="button" class="btn btn-outline-sparta btn-confirm" data-dismiss="modal">
 						확인
 					</button>
 				</div>
 			</div>
 		</div>
-	</div> -->
+	</div>
 
 
 </body>
