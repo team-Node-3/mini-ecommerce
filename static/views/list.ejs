@@ -29,6 +29,9 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <!--header css-->
+    <link rel="stylesheet" href="../styles/mypage.css">
+
     <!-- 쿠키 -->
     <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 
@@ -152,22 +155,7 @@
     }
   </style>
   <body>
-    <nav class="navbar">
-
-      <div class="navbar_logo">
-  
-        <a href="/">슈즈 싹스리</a>
-  
-  
-      </div>
-  
-      <ul class="navbar_menu">
-        <li><a href="/">Home</a></li>
-        <li><a href=""></a>장바구니</li>
-        <li><a href="/mypage">마이페이지</a></li>
-      </ul>
-    </nav>
-
+    <%-include('header.ejs')%>
     <main>
       <section class="py-5 text-center container">
           <div class="row py-lg-5">

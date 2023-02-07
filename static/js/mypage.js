@@ -9,7 +9,20 @@ function modifyMypage() {
       address: $('#address').val()
     },
     success: function(response) {
-      console.log(response)
+      alert('수정이 완료되었습니다.');
+      window.location.reload();
+    }
+  })
+}
+
+function deleteMypage() {
+  $.ajax({
+    type: 'DELETE',
+    url: '/mypage',
+    data: {},
+    success: function(reponse) {
+      alert('계정이 삭제되었습니다.')
+      window.location.href = 'http://localhost:3000/';
     }
   })
 }

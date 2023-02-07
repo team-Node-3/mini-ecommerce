@@ -8,10 +8,9 @@ class MypageRepository {
     return user;
   };
 
-  updateMypage = async(nickname, fieldsToBeUpdated) => {
-    const modifyUser = await User.update(fieldsToBeUpdated, {
-      where: { nickname:nickname }
-    });
+  updateMypage = async(nickname, password, email, phone, address) => {
+    const modifyUser = await User.update({password, email, phone, address},
+      { where: { nickname:nickname } });
     return modifyUser;
   };
 

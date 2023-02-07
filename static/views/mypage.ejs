@@ -12,24 +12,7 @@
   <title>마이 페이지</title>
 </head>
 <body>
-
-  <nav class="navbar">
-
-    <div class="navbar_logo">
-
-      <a href="/">슈즈 싹스리</a>
-
-
-    </div>
-
-    <ul class="navbar_menu">
-      <li><a href="/">Home</a></li>
-      <li><a href="">장바구니</a></li>
-      <li><a href="/mypage">마이페이지</a></li>
-    </ul>
-
-  </nav>
-
+<%-include('header.ejs')%>
   <div class="body_wrap">
     <div class="info_title">내 정보</div>
     <div class="body_content">
@@ -44,8 +27,8 @@
           </div>
           <div class="input_wrap">
               
-            <input value="<%-user.nickname%>" class="user_info" id="nickName" type="text" readonly>
-            <input value="*******" class="user_info" id="password" type="text">
+            <input value="<%-user.nickname%>" class="user_info" id="nickname" type="text" readonly>
+            <input placeholder="******"class="user_info" id="password" type="text">
             <input value="<%-user.name%>" class="user_info" id="name" type="text" readonly>
             <input value="<%-user.email%>" class="user_info" id="email" type="text">
             <input value="<%-user.phone%>" class="user_info" id="phone" type="text">
@@ -55,7 +38,7 @@
     </div>
     <div class="button_wrap">
       <button class="wrapbtn" onclick="modifyMypage()">정보 수정</button>
-      <button class="wrapbtn">계정 삭제</button>
+      <button class="wrapbtn" onclick="deleteMypage()">계정 삭제</button>
     </div>
     
 

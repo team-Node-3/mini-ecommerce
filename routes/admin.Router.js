@@ -21,6 +21,10 @@ const storage = multer.diskStorage({
 const upload = multer({ storage:storage });
 
 
+router.get("/", (req,res) => {
+    return res.render('admin-product-manage')
+})
+
 router.get("/", authMiddleware, productsController.showAdminpage)
 
 router.get("/product/list", productsController.listProduct)
