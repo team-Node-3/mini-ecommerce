@@ -8,12 +8,13 @@ class UserlistRepository {
       });
       return user;
     } catch (err) {
-      resizeBy.status(500).json({ message: err.message });
+      res.status(500).json({ message: err.message });
     }
   };
 
   deleteUser = async ( userId ) => {
-    await User.destroy({ where: { userId }});
+    console.log('실행')
+    await User.destroy({ where: { id: userId }});
     return;
   };
 

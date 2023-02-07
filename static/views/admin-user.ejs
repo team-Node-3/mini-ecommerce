@@ -11,6 +11,8 @@
   <!--admin-user-->
   <link rel="stylesheet" href="../styles/admin-user.css">
   <script defer src="../js/admin-user.js"></script>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
 
 
 
@@ -18,33 +20,11 @@
 </head>
 <body>
   <%-include('header.ejs')%>
-  <div class="user_wrap">
-    <div class="admin_title">고객 정보</div>
-    <div class="usercontent_wrap">
-      <div class="userlist_wrap">
-        <div class="userAll_wrap">
-          <div class="user_label">
-            <label>닉네임</label>
-            <label>이름</label>
-            <label>이메일</label>
-          </div>
-  
-          <div class="user_input">
-            <input class="user_info" id="nickname" type="text" readonly>
-            <input class="user_info" id="name" type="text" readonly>
-            <input class="user_info" id="email" type="text" readonly>
-          </div>
-        </div>
-
-        <div class="user_button">
-          <button class="userbtn">삭제</button>
-        </div>
-
-
-      </div>
-
-    </div>
-
+  <div class="admin_title">고객 정보</div>
+  <div class="user_scroll">
+    <div class="user_wrap"></div>
   </div>
+  
+
 </body>
 </html>

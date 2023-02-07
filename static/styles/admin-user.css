@@ -5,6 +5,10 @@
   font-style: normal;
 }
 
+body {
+  overflow: hidden;
+}
+
 .admin_title {
   font-family: 'GmarketSansMedium';
   font-weight: bold;
@@ -14,11 +18,22 @@
   margin-bottom: 3%;
 }
 
+.user_scroll {
+  width: 100%;
+  height: 600px;
+  overflow: auto;
+  
+}
+.user_scroll::-webkit-scrollbar {
+  display: none;
+}
+
 .usercontent_wrap {
   border: 1px solid rgb(111, 108, 108);
   height: 300px;
   width: 700px;
   margin: auto;
+  margin-bottom: 10px;
 }
 
 .userlist_wrap {
@@ -29,9 +44,11 @@
   justify-content: center;
 }
 
+
 .userAll_wrap {
   display: flex;
 }
+
 
 .user_label {
   display: flex;

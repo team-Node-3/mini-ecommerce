@@ -46,7 +46,7 @@ router.delete("/product/delete", productsController.deleteProduct)
 
 // 회원 목록 조회 삭제 router
 router.get('/users', authMiddleware, userlistController.showUser);
-router.delete('/user/userId', authMiddleware, userlistController.deleteUser);
+router.delete('/users/:userId', authMiddleware, userlistController.deleteUser);
 
 router.get("/order", (req,res) => {
   return res.render('admin-order-manage')
