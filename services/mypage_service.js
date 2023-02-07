@@ -10,14 +10,10 @@ class MypageService {
     return user;
   };
 
-  updateMypage = async ( nickname,fieldsToBeUpdated ) => {
-    const password = fieldsToBeUpdated.password;
+  updateMypage = async ( nickname, fieldsToBeUpdated ) => {
+    const { email, password, phone, address } = fieldsToBeUpdated;
     const hashed = await bcrypt.hash(password, 12);
-    console.log(hashed)
-    const email = fieldsToBeUpdated.email;
-    const phone = fieldsToBeUpdated.phone;
-    const address = fieldsToBeUpdated.address;
-
+    
     const modifyUser = await this.mypageRepository.updateMypage( nickname, hashed, email, phone, address );
     return modifyUser;
   };
