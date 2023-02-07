@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../styles/mypage.css">
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script defer src="../js/mypage.js"></script>
+  
+  <title>마이 페이지</title>
+</head>
+<body>
+<%-include('header.ejs')%>
+  <div class="body_wrap">
+    <div class="info_title">내 정보</div>
+    <div class="body_content">
+      <div class="content_wrap">
+          <div class="label_wrap">
+            <label>닉네임</label>
+            <label>비밀번호</label>
+            <label>이름</label>
+            <label>이메일</label>
+            <label>전화번호</label>
+            <label>주소</label>
+          </div>
+          
+          <div class="input_wrap">              
+            <input value="<%-user.nickname%>" class="user_info" id="nickname" type="text" readonly>
+            <input value="<%-user.password%>" class="user_info" id="password" type="password">
+            <input value="<%-user.name%>" class="user_info" id="name" type="text" readonly>
+            <input value="<%-user.email%>" class="user_info" id="email" type="text">
+            <input value="<%-user.phone%>" class="user_info" id="phone" type="text">
+            <input value="<%-user.address%>" class="user_info" id="address" type="text">
+          </div>    
+      </div>
+    </div>
+    <div class="button_wrap">
+      <button class="wrapbtn" onclick="modifyMypage()">정보 수정</button>
+      <button class="wrapbtn" onclick="deleteMypage()">계정 삭제</button>
+    </div>
+    
+
+  </div>
+  
+</body>
+</html>

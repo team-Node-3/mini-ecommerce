@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>관리 페이지</title>
+
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+
+	<link rel="stylesheet" href="../styles/admin.css">
+
+
+	
+
+	<script>
+
+		$(document).ready(function () {
+			listing();
+		});
+
+		function listing(id) {
+			$.ajax({
+			  type: "GET",
+			  url: "/admin/order/list",
+			  data: {},
+			  success: function (response) {
+				let rows = response.data;
+				console.log(rows)
+				for (let i = 0; i < rows.length; i++) {
+					let image = rows[i]["image"]
+					let name = rows[i]["name"]
+					let orderId = rows[i]["orderId"]
+					let price = rows[i]["price"]
+					let amount = rows[i]["amount"]
+					let nickname = rows[i]["nickname"]
+					let address = rows[i]["address"]
+
+					let totalPrice = price * amount
+	
+				  let temp_html = `<tbody>
+					<tr>
+						<td style="width:  20%;">
+							<img src="${image}" alt="">
+							<a class="user-link">${name}</a>
+							<span class="user-subhead">주문번호 : ${orderId}</span>
+						</td>
+						<td style="width:  9%; text-align:center">
+							${amount}
+						</td>
+						<td class="text-center" style="width:  9%; text-align:center">
+							<span class="label label-default">${totalPrice}</span>
+						</td>
+						<td style="width:  18%; text-align:center">
+							<a>${nickname}</a>
+						</td>
+						<td style="text-align:center">
+							<a>${address}</a>
+						</td>
+						<td class="text-center"style="width: 20%;">
+							<!-- <a id="editButton" onclick="editModal()" class="table-link">
+								<span class="fa-stack">
+									<i class="fa fa-square fa-stack-2x"></i>
+									<i data-orderId="${orderId}" class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+								</span>
+							</a> -->
+							<a id="deleteButton" onclick="alertModal()" class="table-link danger">
+								<span class="fa-stack">
+									<i class="fa fa-square fa-stack-2x"></i>
+									<i data-orderId="${orderId}" class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+								</span>
+							</a>
+						</td>
+					</tr>
+					
+				</tbody>`
+				  $("#productList").append(temp_html);
+				};
+			  },
+			  error: function (error) {
+				alert("목록 불러오기에 실패하였습니다.");
+			  },
+			});
+		  }
+
+
+		/*
+		function deleteModal() {
+			let productId = event.target.dataset.productid
+			let text = "정말로 삭제하시겠습니까?"
+			$('#alertText').text(text);
+			$('#alertModal').modal('show');
+			
+		}
+		*/
+
+
+		function alertModal() {
+			let orderId = event.target.dataset.orderid
+			document.getElementById('modal-orderId').value = orderId;
+
+			$('#alertModal').modal('show');
+
+			
+		}
+
+		function deleteOrder() {
+
+			let orderId = $('#modal-orderId').val()
+
+			console.log(orderId)
+			$.ajax({
+				method: 'DELETE',
+				url: '/admin/order/delete',
+				data: { orderId:orderId },
+				success: function (response) {
+				  alert(response['message'])
+				  window.location.reload()
+				}
+			  })
+
+		}
+
+		  
+
+
+	</script>
+
+
+</head>
+
+
+
+<body>
+	<header>
+
+		<%- include('adminNavBar.ejs')%>
+		
+	</header>
+
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+	<div class="container" id="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="main-box clearfix">
+					<div class="table-responsive">
+						<table id="productList" class="table user-list">
+							<thead>
+								<tr>
+									<th><span>상품이름</span></th>
+									<th class="text-center"><span>주문수량</span></th>
+									<th class="text-center"><span>주문금액</span></th>
+									<th class="text-center"><span>주문자명</span></th>
+									<th class="text-center"><span>주소</span></th>
+									<th>&nbsp;</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	</div>
+
+
+	<div class="modal text-left" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="alertModalLabel">알림</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" id="alertText">
+					정말로 삭제하시겠습니까?
+					<input type="hidden" id="modal-orderId" value="">
+				</div>
+				<div class="modal-footer">
+					<button onclick="deleteOrder()"id="deleteConfirm" type="button" class="btn btn-outline-sparta btn-confirm" data-dismiss="modal">
+						확인
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+
+</html>

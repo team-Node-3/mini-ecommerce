@@ -1,0 +1,22 @@
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+  "nickname":"abc",
+  "password":"1234",
+  "email":"aaa@naver.com",
+  "name":"김김김",
+  "phone":"010-1234-1234",
+  "address":"서울시 서울구 서울동",
+  "admin":0
+}
+
+###
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "nickName":"abc",
+  "pw":"1234"
+}
+
