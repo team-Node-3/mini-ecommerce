@@ -16,7 +16,7 @@ class ListService {
     return {
       productId: order.productId,
       userId: order.userId,
-      amount: order.amount,
+      amount: order.amount
     };
   }
 }

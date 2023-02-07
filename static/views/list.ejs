@@ -110,7 +110,7 @@
           <div>${data[i].price}\\</div>
         </div>
         <div class="btn-group" style="margin-top: 2%;">
-          <button type="button" class="btn btn-sm btn-outline-secondary" onclick="addorder(${data[i].productId}, function() { $('#cartModal').modal('show'); })">장바구니 담기</button>
+          <button type="button" class="btn btn-sm btn-outline-secondary" onclick="addorder(${data[i].productId})">장바구니 담기</button>
         </div>
         `;
         productList.append(temp);
@@ -121,7 +121,7 @@
     });
 }
 
-  function addorder(productId, userId, callback) {
+  function addorder(productId, userId) {
     const amount = 1;
     $.ajax({
       type: "POST",
@@ -129,19 +129,18 @@
       data: {
         productId,
         userId,
-        amount
+        amount,
       },
       error: function(xhr, status, error) {
-        if (status == 400) {
-          alert("존재하지 않는 상품입니다.");
+        if (userId == null) {
+          $("#logModal").modal("show");
         }
-        window.location.href = "/";
       },
-      success: function () {
-        callback();
-        }
+      success: function(response) {
+          $("#cartModal").modal("show");
+      },
     });
-  }
+  };
   
 </script>
 
@@ -191,45 +190,39 @@
             <ul id="page-num" class="pagination justify-content-center"></ul>
           </nav>
 
-          <div
-            class="modal text-left"
-            id="cartModal"
-            tabindex="-1"
-            role="dialog"
-            aria-labelledby="cartModalLabel"
-            aria-hidden="true"
-          >
+
+          <!-- Modal -->
+          <div class="modal fade" id="logModal" tabindex="-1" aria-labelledby="logModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="logModalLabel">알림</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  로그인이 필요합니다!
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" onclick='window.location.href="/login"'>Login</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="cartModalLabel">알림</h5>
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                   장바구니에 담았습니다! 장바구니로 갈까요?
                 </div>
                 <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-outline-sparta"
-                    data-dismiss="modal"
-                  >
-                    취소
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-sparta"
-                    onclick='window.location.href="/"'
-                  >
-                    장바구니
-                  </button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                  <button type="button" class="btn btn-primary" onclick='window.location.href="/orders"'>장바구니</button>
                 </div>
               </div>
             </div>
