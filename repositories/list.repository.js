@@ -29,15 +29,15 @@ class ListRepository {
   };
   createOrder = async (productId, userId, amount) => {
     const order = await Orders.create({
-      productId, amount, userId,
+      productId, userId, amount,
       attributes: [
         'orderId',
         'productId',
         'userId',
-        'amount',
+        'amount'
       ],
     });
-    // const work = await this.Products.findByPk(productId);
+    //  const price = await this.Products.price;
 
     return order;
   };

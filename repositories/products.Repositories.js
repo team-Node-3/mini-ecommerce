@@ -4,11 +4,18 @@ const db = require('../models')
 
 class ProductsRepository {
 
+    findById = async(productId) => {
+        const product = await db.Product.findOne({
+            where: { productId:productId}
+    });
+
+        return product
+    }
+
     listProducts = async () => {
 
         const productList = await db.Product.findAll();
 
-        console.log(productList)
         return productList;
     }
 

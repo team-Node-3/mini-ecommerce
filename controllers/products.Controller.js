@@ -13,7 +13,7 @@ class ProductsController {
     uploadProduct = async (req, res) => {
         try {
             const { name, price, stock, desc} = req.body;
-            const image = req.file.path
+            const image = req.file.path.substring(7)
             const uploadProduct = await this.productsService.uploadProduct(
                 name,
                 price,
@@ -30,7 +30,8 @@ class ProductsController {
 
     editProduct = async (req, res) => {
         try {
-            const {productId, name, price, stock, desc, image } = req.body;
+            const {productId, name, price, stock, desc,} = req.body;
+            const image =req.file.path.substring(7)
             const editProduct = await this.productsService.editProduct(
                 productId,
                 name,
@@ -39,6 +40,12 @@ class ProductsController {
                 desc,
                 image
             );
+            console.log(productId,
+                name,
+                price,
+                stock,
+                desc,
+                image)
             return res.status(200).send({ message: '상품 수정 성공!' });
         } catch (err) {
             console.log(err);
@@ -57,6 +64,24 @@ class ProductsController {
             res.status(400).send({errorMessage : "상품 삭제 실패"})
         }
     }
+    
+    showAdminpage = async (req,res) => {
+        try {
+            const admin = res.locals.user.admin
+            if(admin != 1){
+                return res.status(401).send({message : "관리자만 이용 가능합니다"})
+            }
+            else{
+                return res.render("admin-product-manage")
+            }
+            
+        }
+        catch (err){
+            console.log(err)
+            res.status(400).send({errorMessage : "상품 삭제 실패"})
+        }
+    }
+    
 
     
 }
