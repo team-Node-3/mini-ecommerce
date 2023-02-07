@@ -16,7 +16,6 @@ class ProductsRepository {
 
         const productList = await db.Product.findAll();
 
-        console.log(productList)
         return productList;
     }
 

@@ -34,7 +34,7 @@ class ProductService {
 
     editProduct = async (productId, name, price, stock, desc, image) =>{
 
-        const ProductData = await this.productRepository.editProduct(name, price, stock, desc, image)
+        const ProductData = await this.productRepository.editProduct(productId, name, price, stock, desc, image)
         return;
     }
 
