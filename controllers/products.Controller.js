@@ -21,7 +21,7 @@ class ProductsController {
                 desc,
                 image
             );
-            return res.redirect('/admin');
+            return res.redirect('/admin/product');
         } catch (err) {
             console.log(err);
             res.status(400).json({ errorMessage: '상품 등록 실패' });
@@ -41,7 +41,7 @@ class ProductsController {
                 image
             );
 
-            return res.redirect('/admin');
+            return res.redirect('/admin/product');
         } catch (err) {
             console.log(err);
             res.status(400).json({ errorMessage: '상품 수정 실패' });
