@@ -15,6 +15,7 @@ class MypageRepository {
   };
 
   deleteMypage = async(nickname) => {
+    console.log(nickname)
     const deleteUser = await User.destroy({ 
       where: { nickname:nickname } 
     });
