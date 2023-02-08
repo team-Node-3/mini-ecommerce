@@ -10,11 +10,11 @@ router.use('/buy', [BuyRouter]);
 
 router.get('/', authMiddleware, (req, res) => {
   const user = res.locals.user;
-  res.render('list.ejs', {user:user});
+  res.render('list', {user:user});
   });
 router.get('/orders', authMiddleware, (req, res)=> {
   const user = res.locals.user;
-  res.render('orders.ejs', {user:user});
+  res.render('orders', {user:user});
 });
 
 module.exports = router;

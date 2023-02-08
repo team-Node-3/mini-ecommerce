@@ -22,7 +22,7 @@ function deleteMypage() {
     data: {},
     success: function(reponse) {
       alert('계정이 삭제되었습니다.')
-      window.location.href = 'http://localhost:3000/';
+      window.location.href = '/signUp';
     }
   })
 }
