@@ -3,7 +3,6 @@ const OrderService = require('../services/orders.Service');
 // User의 컨트롤러(Controller)역할을 하는 클래스
 class OrderController {
     OrderService = new OrderService();
-
     listOrder = async (req, res) =>
     {
         const orderList = await this.OrderService.listOrder()
@@ -14,7 +13,7 @@ class OrderController {
     uploadOrder = async (req, res) => {
         try {
             const { name, price, stock, desc} = req.body;
-            const image = req.file.path
+            const image = req.file.path.substring(7)
             const uploadOrder = await this.OrderService.uploadOrder(
                 name,
                 price,
